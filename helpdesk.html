@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CWA Help Desk appointment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 20px;
+            color: #333;
+        }
+
+        .form-container {
+            max-width: 650px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 25px 30px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Swinburne Logo styling */
+        .logo-container {
+            margin-bottom: 15px;
+        }
+        
+        .logo-container img {
+            max-height: 60px;
+            display: block;
+        }
+
+        h1 {
+            font-size: 22px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin: 6px 0;
+            font-size: 14px;
+        }
+
+        fieldset {
+            border: 1px solid #c0c0c0;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            padding: 12px 15px;
+        }
+
+        legend {
+            font-size: 13px;
+            font-weight: normal;
+            padding: 0 5px;
+            color: #333;
+        }
+
+        .form-row {
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-size: 13px;
+            margin-right: 5px;
+        }
+
+        input[type="text"],
+        select,
+        textarea {
+            font-family: inherit;
+            font-size: 13px;
+            padding: 3px 5px;
+            border: 1px solid #aaa;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 4px;
+            vertical-align: middle;
+        }
+
+        .inline-label {
+            margin-right: 15px;
+            font-weight: normal;
+        }
+
+        textarea {
+            width: 100%;
+            max-width: 400px;
+            height: 90px;
+            resize: vertical;
+            display: block;
+            margin-top: 5px;
+            box-sizing: border-box;
+            font-family: monospace;
+        }
+
+        .buttons {
+            margin-top: 15px;
+        }
+
+        button, input[type="submit"], input[type="reset"] {
+            padding: 4px 12px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="form-container">
+        <!-- Logo có gắn liên kết -->
+        <div class="logo-container">
+            <a href="http://www.swin.edu.au" target="_blank" title="Swinburne University">
+                <img src="logo.png" alt="Swinburne University Of Technology" />
+            </a>
+        </div>
+
+        <h1>CWA Help Desk Appointment</h1>
+        <p>The Help Desk is located in ATC620. Open 10:30 to 19:00 Monday to Friday.</p>
+        <p>Check Blackboard for when CWA tutors will be there.</p>
+
+        <form action="#" method="post">
+            <!-- Student Details -->
+            <fieldset>
+                <legend>Student details</legend>
+                
+                <div class="form-row">
+                    <label for="studentId">Student ID</label>
+                    <input 
+                        type="text" 
+                        id="studentId" 
+                        name="studentId" 
+                        required 
+                        pattern="\d{7,10}" 
+                        title="Student ID must be between 7 and 10 digits" 
+                    />
+                </div>
+            
+                <div class="form-row">
+                    <label for="givenName">Given Name</label>
+                    <input 
+                        type="text" 
+                        id="givenName" 
+                        name="givenName" 
+                        maxlength="15" 
+                        required 
+                        pattern="[A-Za-z]+" 
+                        title="Only alphabetical characters allowed (up to 15 characters)" 
+                    />
+
+                    <label for="familyName" style="margin-left: 10px;">Family Name</label>
+                    <input 
+                        type="text" 
+                        id="familyName" 
+                        name="familyName" 
+                        maxlength="15" 
+                        required 
+                        pattern="[A-Za-z]+" 
+                        title="Only alphabetical characters allowed (up to 15 characters)" 
+                    />
+                </div>
+            </fieldset>
+
+            <!-- Your Unit & Tutor -->
+            <fieldset>
+                <legend>Your unit</legend>
+
+                <div class="form-row">
+                    <input type="radio" id="unit1" name="unit" value="COS10011" required>
+                    <label for="unit1" class="inline-label">COS10011</label>
+
+                    <input type="radio" id="unit2" name="unit" value="COS60004">
+                    <label for="unit2" class="inline-label">COS60004</label>
+
+                    <input type="radio" id="unit3" name="unit" value="COS60007">
+                    <label for="unit3" class="inline-label">COS60007</label>
+                </div>
+
+                <div class="form-row" style="margin-top: 10px;">
+                    <label for="tutor">Your Tutor</label>
+                    <select id="tutor" name="tutor" required>
+                        <option value="">Please Select</option>
+                        <option value="john">John Smith</option>
+                        <option value="sarah">Sarah Connor</option>
+                        <option value="michael">Michael Chang</option>
+                        <option value="emma">Emma Watson</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <!-- Issue & Description -->
+            <fieldset>
+                <legend>Issue</legend>
+
+                <div class="form-row">
+                    <input type="checkbox" id="issueHtml" name="issue" value="HTML" checked>
+                    <label for="issueHtml" class="inline-label">HTML</label>
+
+                    <input type="checkbox" id="issueCss" name="issue" value="CSS">
+                    <label for="issueCss" class="inline-label">CSS</label>
+
+                    <input type="checkbox" id="issueJs" name="issue" value="JavaScript">
+                    <label for="issueJs" class="inline-label">JavaScript</label>
+
+                    <input type="checkbox" id="issuePhp" name="issue" value="PHP">
+                    <label for="issuePhp" class="inline-label">PHP</label>
+
+                    <input type="checkbox" id="issueMysql" name="issue" value="MySQL">
+                    <label for="issueMysql" class="inline-label">MySQL</label>
+                </div>
+
+                <div class="form-row" style="margin-top: 10px;">
+                    <label for="issueDesc">Description of Issue</label>
+                    <textarea 
+                        id="issueDesc" 
+                        name="issueDescription" 
+                        placeholder="Write description of your problem here..."></textarea>
+                </div>
+            </fieldset>
+
+            <!-- Preferred Date / Time -->
+            <fieldset>
+                <legend>Preferred Date / Time</legend>
+
+                <div class="form-row">
+                    <label for="prefDate" style="display: inline-block; width: 45px;">Date</label>
+                    <input 
+                        type="text" 
+                        id="prefDate" 
+                        name="prefDate" 
+                        placeholder="dd/mm/yyyy" 
+                        pattern="\d{2}/\d{2}/\d{4}" 
+                        title="Please match the requested format: dd/mm/yyyy" 
+                    />
+                </div>
+
+                <div class="form-row">
+                    <label for="prefTime" style="display: inline-block; width: 45px;">Time</label>
+                    <input 
+                        type="text" 
+                        id="prefTime" 
+                        name="prefTime" 
+                        placeholder="00:00" 
+                        pattern="\d{2}:\d{2}" 
+                        title="Please match the requested format: 00:00" 
+                    />
+                </div>
+            </fieldset>
+
+            <!-- Form Buttons -->
+            <div class="buttons">
+                <input type="submit" value="Book">
+                <input type="reset" value="Reset form">
+            </div>
+
+        </form>
+    </div> <!-- Đóng thẻ form-container tại đây -->
+
+</body>
