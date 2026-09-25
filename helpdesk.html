@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>CWA Help Desk appointment</title>
+</head>
+<body>
 
-        
-    
-    <div class="form-container">
-        
+    <div class="form-container" id="formContainer">
         <div class="logo-container">
             <a href="http://www.swin.edu.au" target="_blank" title="Swinburne University">
                 <img src="logo.png" alt="Swinburne University Of Technology" />
@@ -18,11 +17,10 @@
         <p>The Help Desk is located in ATC620. Open 10:30 to 19:00 Monday to Friday.</p>
         <p>Check Blackboard for when CWA tutors will be there.</p>
 
-        <form action="#" method="post">
+        <form id="appointmentForm">
             
             <fieldset>
                 <legend>Student details</legend>
-                
                 <div class="form-row">
                     <label for="studentId">Student ID</label>
                     <input 
@@ -60,10 +58,8 @@
                 </div>
             </fieldset>
 
-            
             <fieldset>
                 <legend>Your unit</legend>
-
                 <div class="form-row">
                     <input type="radio" id="unit1" name="unit" value="COS10011" required>
                     <label for="unit1" class="inline-label">COS10011</label>
@@ -87,10 +83,8 @@
                 </div>
             </fieldset>
 
-            
             <fieldset>
                 <legend>Issue</legend>
-
                 <div class="form-row">
                     <input type="checkbox" id="issueHtml" name="issue" value="HTML" checked>
                     <label for="issueHtml" class="inline-label">HTML</label>
@@ -117,10 +111,8 @@
                 </div>
             </fieldset>
 
-            <!-- Preferred Date / Time -->
             <fieldset>
                 <legend>Preferred Date / Time</legend>
-
                 <div class="form-row">
                     <label for="prefDate" style="display: inline-block; width: 45px;">Date</label>
                     <input 
@@ -146,7 +138,6 @@
                 </div>
             </fieldset>
 
-            
             <div class="buttons">
                 <input type="submit" value="Book">
                 <input type="reset" value="Reset form">
@@ -155,4 +146,60 @@
         </form>
     </div> 
 
+    <!-- Hidden until submission -->
+    <div id="resultView" hidden>
+        <h1>HTML - Form Data Extraction</h1>
+        <hr>
+        <p style="text-align: center; margin-bottom: 6px;">Table of data pairs submitted to the server</p>
+
+        <table id="resultTable" border="1">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Form Variable 'name'</th>
+                    <th>Submitted 'value'</th>
+                </tr>
+            </thead>
+            <tbody id="resultBody"></tbody>
+        </table>
+
+        <p>Are all name value pairs here? Anything missing?</p>
+        <button type="button" onclick="showForm()">Back</button>
+    </div>
+
+    <script>
+        const form = document.getElementById('appointmentForm');
+        const formContainer = document.getElementById('formContainer');
+        const resultView = document.getElementById('resultView');
+        const resultBody = document.getElementById('resultBody');
+
+        form.onsubmit = function (event) {
+            event.preventDefault(); // Stop page refresh
+
+            // Clear previous entries
+            resultBody.innerHTML = '';
+
+            // Extract all form values and build rows
+            const formData = new FormData(form);
+            let rowNumber = 1;
+
+            for (const [key, val] of formData.entries()) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${rowNumber++}</td><td>${key}</td><td>${val}</td>`;
+                resultBody.appendChild(tr);
+            }
+
+            // Hide form, show results
+            formContainer.hidden = true;
+            resultView.hidden = false;
+        };
+
+        function showForm() {
+            // Return back to the form
+            resultView.hidden = true;
+            formContainer.hidden = false;
+        }
+    </script>
+
 </body>
+</html>
