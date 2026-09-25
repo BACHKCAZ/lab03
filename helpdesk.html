@@ -146,7 +146,7 @@
         </form>
     </div> 
 
-    <!-- Hidden until submission -->
+    
     <div id="resultView" hidden>
         <h1>HTML - Form Data Extraction</h1>
         <hr>
@@ -174,12 +174,12 @@
         const resultBody = document.getElementById('resultBody');
 
         form.onsubmit = function (event) {
-            event.preventDefault(); // Stop page refresh
+            event.preventDefault(); 
 
-            // Clear previous entries
+            
             resultBody.innerHTML = '';
 
-            // Extract all form values and build rows
+            
             const formData = new FormData(form);
             let rowNumber = 1;
 
@@ -189,7 +189,7 @@
                 resultBody.appendChild(tr);
             }
 
-            // Hide form, show results
+          
             formContainer.hidden = true;
             resultView.hidden = false;
         };
