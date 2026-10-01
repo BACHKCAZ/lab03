@@ -28,7 +28,7 @@
                         id="studentId" 
                         name="studentId" 
                         required 
-                        pattern="\d{7,10}" 
+                        pattern="10\d{7,10}" 
                         title="Student ID must be between 7 and 10 digits" 
                     />
                 </div>
@@ -98,7 +98,7 @@
                     <input type="checkbox" id="issuePhp" name="issue[]" value="PHP">
                     <label for="issuePhp" class="inline-label">PHP</label>
 
-                    <input type="checkbox" id="issueMysql" name="issue" value="MySQL">
+                    <input type="checkbox" id="issueMysql" name="issue[]" value="MySQL">
                     <label for="issueMysql" class="inline-label">MySQL</label>
                 </div>
 
@@ -134,7 +134,8 @@
                         id="prefTime" 
                         name="prefTime" 
                         placeholder="00:00" 
-                        pattern="\d{2}:\d{2}" 
+                        pattern="\d{2}:\d{2}"
+                        required
                         title="Please match the requested format: 00:00" 
                     />
                 </div>
