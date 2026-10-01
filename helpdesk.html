@@ -86,16 +86,16 @@
             <fieldset>
                 <legend>Issue</legend>
                 <div class="form-row">
-                    <input type="checkbox" id="issueHtml" name="issue" value="HTML" checked>
+                    <input type="checkbox" id="issueHtml" name="issue[]" value="HTML" checked>
                     <label for="issueHtml" class="inline-label">HTML</label>
 
-                    <input type="checkbox" id="issueCss" name="issue" value="CSS">
+                    <input type="checkbox" id="issueCss" name="issue[]" value="CSS">
                     <label for="issueCss" class="inline-label">CSS</label>
 
-                    <input type="checkbox" id="issueJs" name="issue" value="JavaScript">
+                    <input type="checkbox" id="issueJs" name="issue[]" value="JavaScript">
                     <label for="issueJs" class="inline-label">JavaScript</label>
 
-                    <input type="checkbox" id="issuePhp" name="issue" value="PHP">
+                    <input type="checkbox" id="issuePhp" name="issue[]" value="PHP">
                     <label for="issuePhp" class="inline-label">PHP</label>
 
                     <input type="checkbox" id="issueMysql" name="issue" value="MySQL">
@@ -106,7 +106,9 @@
                     <label for="issueDesc">Description of Issue</label>
                     <textarea 
                         id="issueDesc" 
-                        name="issueDescription" 
+                        name="issueDescription"
+                        rows="5" 
+                        cols="40" 
                         placeholder="Write description of your problem here..."></textarea>
                 </div>
             </fieldset>
@@ -144,7 +146,7 @@
             </div>
 
         </form>
-    </div> 
+    
 
     
     
