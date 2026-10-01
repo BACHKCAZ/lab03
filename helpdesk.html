@@ -17,7 +17,7 @@
         <p>The Help Desk is located in ATC620. Open 10:30 to 19:00 Monday to Friday.</p>
         <p>Check Blackboard for when CWA tutors will be there.</p>
 
-        <form id="appointmentForm">
+        <form method="post" action="http://mercury.swin.edu.au/it000000/formtest.php">
             
             <fieldset>
                 <legend>Student details</legend>
@@ -75,10 +75,10 @@
                     <label for="tutor">Your Tutor</label>
                     <select id="tutor" name="tutor" required>
                         <option value="">Please Select</option>
-                        <option value="john">John Smith</option>
-                        <option value="sarah">Sarah Connor</option>
-                        <option value="michael">Michael Chang</option>
-                        <option value="emma">Emma Watson</option>
+                        <option value="trung">Trung Doang</option>
+                        <option value="toby">Toby Bui</option>
+                        <option value="thomas">Thomas Harrison</option>
+                        <option value="david">David Fang</option>
                     </select>
                 </div>
             </fieldset>
@@ -147,58 +147,7 @@
     </div> 
 
     
-    <div id="resultView" hidden>
-        <h1>HTML - Form Data Extraction</h1>
-        <hr>
-        <p style="text-align: center; margin-bottom: 6px;">Table of data pairs submitted to the server</p>
-
-        <table id="resultTable" border="1">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Form Variable 'name'</th>
-                    <th>Submitted 'value'</th>
-                </tr>
-            </thead>
-            <tbody id="resultBody"></tbody>
-        </table>
-
-        <p>Are all name value pairs here? Anything missing?</p>
-        <button type="button" onclick="showForm()">Back</button>
-    </div>
-
-    <script>
-        const form = document.getElementById('appointmentForm');
-        const formContainer = document.getElementById('formContainer');
-        const resultView = document.getElementById('resultView');
-        const resultBody = document.getElementById('resultBody');
-
-        form.onsubmit = function (event) {
-            event.preventDefault(); 
-
-            
-            resultBody.innerHTML = '';
-
-            
-            const formData = new FormData(form);
-            let rowNumber = 1;
-
-            for (const [key, val] of formData.entries()) {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `<td>${rowNumber++}</td><td>${key}</td><td>${val}</td>`;
-                resultBody.appendChild(tr);
-            }
-
-          
-            formContainer.hidden = true;
-            resultView.hidden = false;
-        };
-
-        function showForm() {
-           resultView.hidden = true;
-           formContainer.hidden = false;
-        }
-    </script>
+    
 
 </body>
 </html>
